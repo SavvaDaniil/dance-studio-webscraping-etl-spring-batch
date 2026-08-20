@@ -1,0 +1,36 @@
+{
+  "type": "record",
+  "name": "ScheduleRow",
+  "namespace":"com.project.avro",
+  "fields": [
+    {
+      "name":"extractAt",
+      "type":"string"
+    },
+    {
+      "name":"branchName",
+      "type":"string"
+    },
+    {
+      "name":"weekdayShort",
+      "type":"string"
+    },
+    {
+      "name":"timeFrom",
+      "type":"string"
+    },
+    {
+      "name":"teacherName",
+      "type":"string"
+    },
+    {
+      "name":"styleName",
+      "type":"string"
+    },
+    {
+      "name":"level",
+      "type": ["null", "string"],
+      "default": null
+    }
+  ]
+}

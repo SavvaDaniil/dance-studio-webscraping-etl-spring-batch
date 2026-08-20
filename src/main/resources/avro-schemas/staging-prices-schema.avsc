@@ -1,0 +1,15 @@
+{
+  "type": "record",
+  "name": "Price",
+  "namespace":"com.project.avro",
+  "fields": [
+    {
+      "name":"title",
+      "type":"string"
+    },
+    {
+      "name":"price",
+      "type":"int"
+    }
+  ]
+}

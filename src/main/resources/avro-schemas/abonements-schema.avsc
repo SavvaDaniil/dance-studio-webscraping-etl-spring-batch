@@ -1,0 +1,19 @@
+{
+  "type": "record",
+  "name": "Abonement",
+  "namespace":"com.project.avro",
+  "fields": [
+    {
+      "name":"title",
+      "type":"string"
+    },
+    {
+      "name":"price_str",
+      "type":"string"
+    },
+    {
+      "name":"extract_at",
+      "type":"string"
+    }
+  ]
+}

@@ -1,0 +1,39 @@
+{
+  "type": "record",
+  "name": "Workshop",
+  "namespace":"com.project.avro",
+  "fields": [
+    {
+      "name":"extractAt",
+      "type":"string"
+    },
+    {
+      "name":"dates",
+      "type":"string"
+    },
+    {
+      "name":"times",
+      "type":"string"
+    },
+    {
+      "name":"name",
+      "type":"string"
+    },
+     {
+       "name":"branchName",
+       "type":"string"
+     },
+     {
+       "name":"styleName",
+       "type":"string"
+     },
+     {
+       "name":"description",
+       "type":"string"
+     },
+   {
+     "name":"priceStr",
+     "type":"string"
+   }
+  ]
+}

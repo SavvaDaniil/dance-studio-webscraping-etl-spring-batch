@@ -1,0 +1,32 @@
+{
+  "type": "record",
+  "name": "Schedule",
+  "namespace":"com.project.avro",
+  "fields": [
+    {
+      "name":"branch_name",
+      "type":"string"
+    },
+    {
+      "name":"time_from",
+      "type":"string"
+    },
+    {
+      "name":"teacher_name",
+      "type":"string"
+    },
+    {
+      "name":"style_name",
+      "type":"string"
+    },
+    {
+      "name":"level_name",
+      "type": ["null", "string"],
+      "default": null
+    },
+    {
+      "name":"weekday",
+      "type":"int"
+    }
+  ]
+}
