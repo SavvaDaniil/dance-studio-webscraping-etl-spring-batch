@@ -25,16 +25,24 @@ public class DatabaseLoader {
     private final ScheduleRepository scheduleRepository;
     private final WorkshopRepository workshopRepository;
 
-
-    public DatabaseLoader(DatabaseConfiguration configuration) {
+    public DatabaseLoader(
+            DatabaseConfiguration configuration,
+          StyleRepository styleRepository,
+          TeacherRepository teacherRepository,
+          BranchRepository branchRepository,
+          LevelRepository levelRepository,
+          PriceRepository priceRepository,
+          ScheduleRepository scheduleRepository,
+          WorkshopRepository workshopRepository
+    ) {
         this.configuration = configuration;
-        this.styleRepository = new StyleRepository();
-        this.teacherRepository = new TeacherRepository();
-        this.branchRepository = new BranchRepository();
-        this.levelRepository = new LevelRepository();
-        this.priceRepository = new PriceRepository();
-        this.scheduleRepository = new ScheduleRepository();
-        this.workshopRepository = new WorkshopRepository();
+        this.styleRepository = styleRepository;
+        this.teacherRepository = teacherRepository;
+        this.branchRepository = branchRepository;
+        this.levelRepository = levelRepository;
+        this.priceRepository = priceRepository;
+        this.scheduleRepository = scheduleRepository;
+        this.workshopRepository = workshopRepository;
     }
 
     public Connection getConnection() throws SQLException {
@@ -73,7 +81,11 @@ public class DatabaseLoader {
                 connection.commit();
 
             } catch (Exception e) {
-                connection.rollback();
+                try {
+                    connection.rollback();
+                } catch (SQLException rollbackException) {
+                    e.addSuppressed(rollbackException);
+                }
                 throw e;
             }
         }
@@ -84,13 +96,13 @@ public class DatabaseLoader {
         try (Statement statement = connection.createStatement()) {
             statement.executeUpdate("""
             TRUNCATE TABLE
-                ds_example_prices,
-                ds_example_styles,
-                ds_example_teachers,
-                ds_example_branches,
-                ds_example_levels,
-                ds_example_workshops,
-                ds_example_schedules
+                mdcnrg_prices,
+                mdcnrg_styles,
+                mdcnrg_teachers,
+                mdcnrg_branches,
+                mdcnrg_levels,
+                mdcnrg_workshops,
+                mdcnrg_schedules
             CASCADE
             """);
         }

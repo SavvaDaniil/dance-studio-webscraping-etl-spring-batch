@@ -20,13 +20,16 @@ import java.util.Map;
 public class LoadPipeline {
 
     private final ParquetReaderUtil parquetReaderUtil;
-    private final DatabaseConfiguration databaseConfiguration;
     private final S3Storage s3Storage;
+    private final DatabaseLoader databaseLoader;
 
-    public LoadPipeline(ParquetReaderUtil parquetReaderUtil, DatabaseConfiguration databaseConfiguration, S3Storage s3Storage) {
+    public LoadPipeline(
+            ParquetReaderUtil parquetReaderUtil,
+            S3Storage s3Storage,
+            DatabaseLoader databaseLoader) {
         this.parquetReaderUtil = parquetReaderUtil;
-        this.databaseConfiguration = databaseConfiguration;
         this.s3Storage = s3Storage;
+        this.databaseLoader = databaseLoader;
     }
 
     public void run(LocalDateTime extractAt, boolean isDebug) throws Exception {
@@ -149,10 +152,7 @@ public class LoadPipeline {
             );
         }
 
-        DatabaseLoader databaseLoader = new DatabaseLoader(
-                this.databaseConfiguration
-        );
-        databaseLoader.load(
+        this.databaseLoader.load(
                 prices,
                 teachersByName.values(),
                 stylesByName.values(),
